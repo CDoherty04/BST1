@@ -3,7 +3,7 @@ from bst import BST
 
 def print_menu():
     """Prints the menu options"""
-    choice = input("Choose one of the following:\n"
+    choice = input("\nChoose one of the following:\n"
                    "1) Add\n"
                    "2) Print\n"
                    "3) Quit\n")
@@ -18,7 +18,20 @@ class Executive:
 
     def add(self):
         """Takes a comma separated list and adds to the BST"""
-        pass
+
+        while True:
+            try:
+                nums = input("Enter a comma separated list of integers: ").split(",")
+                nums = [int(num.strip()) for num in nums]
+                break
+            except ValueError:
+                print("Invalid input, try again\n")
+
+        for num in nums:
+            try:
+                self.BST.add(num)
+            except ValueError:
+                print(f"No duplicates allowed within a Binary Search Tree, {num} was ignored")
 
     def ordered_print(self):
         """Prints the tree in a user-specified order"""
@@ -32,19 +45,22 @@ class Executive:
             print()
 
             # List of nodes that are taken in a certain order to be printed later
-            nodes = []
+            nums = []
 
             if order == "1":
-                self.BST.preorder(nodes.append)
+                self.BST.preorder(nums.append)
                 break
             elif order == "2":
-                self.BST.inorder(nodes.append)
+                self.BST.inorder(nums.append)
                 break
             elif order == "3":
-                self.BST.postorder(nodes.append)
+                self.BST.postorder(nums.append)
                 break
             else:
                 print("That is not a valid option, enter 1, 2, or 3.")
+
+        for num in nums:
+            print(num)
 
     def run(self):
         """Runs the program through the Executive class"""
