@@ -27,4 +27,21 @@ class Executive:
     def run(self):
         """Runs the program through the Executive class"""
         while True:
-            print_menu()
+            choice = print_menu().lower()
+            print()
+
+            match choice:
+                case "1":
+                    self.add()
+                case "add":
+                    self.add()
+                case "2":
+                    self.ordered_print()
+                case "print":
+                    self.ordered_print()
+                case "3":
+                    quit()
+                case "quit":
+                    quit()
+                case _:
+                    print("That is an invalid option")
