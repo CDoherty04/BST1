@@ -49,3 +49,37 @@ class BST:
 
         # Traverse right
         self._rec_preorder(visit_function, cur_node.right)
+
+    def inorder(self, visit_function):
+        return self._rec_inorder(visit_function, self._root)
+
+    def _rec_inorder(self, visit_function, cur_node):
+        # Return Nothing if the tree is empty
+        if cur_node is None:
+            return None
+
+        # Traverse left
+        self._rec_inorder(visit_function, cur_node.left)
+
+        # Calls visit function on the current node's entry
+        visit_function(cur_node.entry)
+
+        # Traverse right
+        self._rec_inorder(visit_function, cur_node.right)
+
+    def postorder(self, visit_function):
+        return self._rec_postorder(visit_function, self._root)
+
+    def _rec_postorder(self, visit_function, cur_node):
+        # Return Nothing if the tree is empty
+        if cur_node is None:
+            return None
+
+        # Traverse left
+        self._rec_postorder(visit_function, cur_node.left)
+
+        # Traverse right
+        self._rec_postorder(visit_function, cur_node.right)
+
+        # Calls visit function on the current node's entry
+        visit_function(cur_node.entry)
