@@ -22,7 +22,29 @@ class Executive:
 
     def ordered_print(self):
         """Prints the tree in a user-specified order"""
-        pass
+
+        while True:
+            order = input("Which order would you like to print in?\n"
+                          "1) Pre Order\n"
+                          "2) In Order\n"
+                          "3) Post Order\n")
+
+            print()
+
+            # List of nodes that are taken in a certain order to be printed later
+            nodes = []
+
+            if order == "1":
+                self.BST.preorder(nodes.append)
+                break
+            elif order == "2":
+                self.BST.inorder(nodes.append)
+                break
+            elif order == "3":
+                self.BST.postorder(nodes.append)
+                break
+            else:
+                print("That is not a valid option, enter 1, 2, or 3.")
 
     def run(self):
         """Runs the program through the Executive class"""
